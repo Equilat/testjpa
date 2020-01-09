@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import domain.Participant;
+import domain.Utilisateur;
 
 public class JpaTest {
 
@@ -24,7 +24,7 @@ public class JpaTest {
 		tx.begin();
 		try {
 
-			Participant p = new Participant();
+			Utilisateur p = new Utilisateur();
 			p.setMail("martin2@mail.com");
 			manager.persist(p);
 
@@ -35,11 +35,11 @@ public class JpaTest {
 			e.printStackTrace();
 		}
 		tx.commit();
-		String s = "SELECT e FROM Participant as e where e.mail=:mail";
+		String s = "SELECT e FROM Utilisateur as e where e.mail=:mail";
 
-		Query q = manager.createQuery(s,Participant.class);
+		Query q = manager.createQuery(s, Utilisateur.class);
 		q.setParameter("mail", "martin2@mail.com"); 
-		List<Participant> res = q.getResultList();
+		List<Utilisateur> res = q.getResultList();
 
 		System.err.println(res.size());
 		System.err.println(res.get(0).getMail());

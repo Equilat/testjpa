@@ -11,7 +11,6 @@ public class Reunion {
 	private Date dateFixee;
 	private String intitule;
 	private String resume;
-	private List<Participant> participants;
 
 	@Id
 	@GeneratedValue
@@ -41,13 +40,6 @@ public class Reunion {
 	}
 	public void setDateFixee(Date dateFixee) {
 		this.dateFixee = dateFixee;
-	}
-	@OneToMany (mappedBy = "reunion")
-	public List<Participant> getParticipants() {
-		return participants;
-	}
-	public void setParticipants(List<Participant> participants) {
-		this.participants = participants;
 	}
 	
 

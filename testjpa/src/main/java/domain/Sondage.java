@@ -11,7 +11,8 @@ public class Sondage {
 	
 	private String lienWeb;
 	private List<Date> dates;
-	private List<Participant> participants;
+	private List<Utilisateur> utilisateurs;
+	private Reunion reunion;
 
 	@Id
 	@GeneratedValue
@@ -32,7 +33,7 @@ public class Sondage {
 	}
 	
 	@OneToMany
-	@JoinColumn(name = "Id")
+	@JoinColumn(name = "id")
 	public List<Date> getDates() {
 		return dates;
 	}
@@ -42,13 +43,22 @@ public class Sondage {
 	}
 
 	@ManyToMany
-	@JoinTable(name = "PARTICIPANT_SONDAGE")
-	public List<Participant> getParticipants() {
-		return this.participants;
+	@JoinTable(name = "UTILISATEUR_SONDAGE")
+	public List<Utilisateur> getUtilisateurs() {
+		return this.utilisateurs;
 	}
 
-	public void setParticipants(List<Participant> participants) {
-		this.participants = participants;
+	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
+	}
+
+	@OneToOne
+	public Reunion getReunion() {
+		return this.reunion;
+	}
+
+	public void setReunion(Reunion reunion) {
+		this.reunion = reunion;
 	}
 	
 
