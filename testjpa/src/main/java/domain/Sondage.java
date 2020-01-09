@@ -2,10 +2,7 @@ package domain;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 public class Sondage {
@@ -14,6 +11,7 @@ public class Sondage {
 	
 	private String lienWeb;
 	private List<Date> dates;
+	private List<Participant> participants;
 
 	@Id
 	@GeneratedValue
@@ -33,13 +31,24 @@ public class Sondage {
 		this.lienWeb = lienWeb;
 	}
 	
-	@Transient
+	@OneToMany
+	@JoinColumn(name = "Id")
 	public List<Date> getDates() {
 		return dates;
 	}
 
 	public void setDates(List<Date> dates) {
 		this.dates = dates;
+	}
+
+	@ManyToMany
+	@JoinTable(name = "PARTICIPANT_SONDAGE")
+	public List<Participant> getParticipants() {
+		return this.participants;
+	}
+
+	public void setParticipants(List<Participant> participants) {
+		this.participants = participants;
 	}
 	
 

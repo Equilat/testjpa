@@ -2,10 +2,7 @@ package domain;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 public class Reunion {
@@ -37,14 +34,15 @@ public class Reunion {
 	public void setResume(String resume) {
 		this.resume = resume;
 	}
-	@Transient
+
+	@ManyToOne
 	public Date getDateFixee() {
 		return dateFixee;
 	}
 	public void setDateFixee(Date dateFixee) {
 		this.dateFixee = dateFixee;
 	}
-	@Transient
+	@OneToMany (mappedBy = "reunion")
 	public List<Participant> getParticipants() {
 		return participants;
 	}

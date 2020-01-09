@@ -2,9 +2,7 @@ package domain;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 public class Participant {
@@ -13,6 +11,7 @@ public class Participant {
 	private String nom;
 	private String prenom;
 	private List<Sondage> sondages;
+	private List<PrefsAlimentaires> prefsAlimentaires;
 	
 	// a participant is in only reunion at a time 
 	private Reunion reunion;
@@ -43,7 +42,7 @@ public class Participant {
 		this.prenom = prenom;
 	}
 
-	@Transient
+	@ManyToMany (mappedBy = "participants")
 	public List<Sondage> getSondages() {
 		return sondages;
 	}
@@ -52,12 +51,22 @@ public class Participant {
 		this.sondages = sondages;
 	}
 
-	@Transient
+	@ManyToOne
 	public Reunion getReunion() {
 		return reunion;
 	}
 
 	public void setReunion(Reunion reunion) {
 		this.reunion = reunion;
+	}
+
+	@OneToMany
+	@JoinColumn(name = "Id")
+	public List<PrefsAlimentaires> getPrefsAlimentaires() {
+		return this.prefsAlimentaires;
+	}
+
+	public void setPrefsAlimentaires(List<PrefsAlimentaires> prefsAlimentaires) {
+		this.prefsAlimentaires = prefsAlimentaires;
 	}
 }
