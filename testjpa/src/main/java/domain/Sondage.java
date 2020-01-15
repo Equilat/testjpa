@@ -10,7 +10,6 @@ public class Sondage {
 	private long id;
 	
 	private String lienWeb;
-	private List<DateReu> dateReus;
 	private List<Utilisateur> utilisateurs;
 	private Reunion reunion;
 
@@ -18,9 +17,8 @@ public class Sondage {
 
 	}
 
-	public Sondage(String lienWeb, Reunion reunion) {
+	public Sondage(String lienWeb) {
 		this.lienWeb = lienWeb;
-		this.reunion = reunion;
 	}
 
 	@Id
@@ -40,19 +38,14 @@ public class Sondage {
 	public void setLienWeb(String lienWeb) {
 		this.lienWeb = lienWeb;
 	}
-	
-	@OneToMany
-	@JoinColumn(name = "id")
-	public List<DateReu> getDateReus() {
-		return dateReus;
-	}
 
-	public void setDateReus(List<DateReu> dateReus) {
-		this.dateReus = dateReus;
-	}
-
-	@ManyToMany
-	@JoinTable(name = "UTILISATEUR_SONDAGE")
+	@ManyToMany(cascade = {
+			CascadeType.PERSIST,
+			CascadeType.MERGE
+	})
+	@JoinTable(name = "UTILISATEUR_SONDAGE",
+			joinColumns = @JoinColumn(name = "SONDAGES_ID"),
+			inverseJoinColumns = @JoinColumn(name = "UTILISATEURS_MAIL"))
 	public List<Utilisateur> getUtilisateurs() {
 		return this.utilisateurs;
 	}

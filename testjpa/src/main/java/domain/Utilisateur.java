@@ -16,11 +16,10 @@ public class Utilisateur {
 	public Utilisateur() {
 	}
 
-	public Utilisateur(String mail, String nom, String prenom, PrefsAlimentaires prefsAlimentaires) {
+	public Utilisateur(String mail, String nom, String prenom) {
 		this.mail = mail;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.prefsAlimentaires = prefsAlimentaires;
 	}
 
 	// better to put @Id on the getters to preserve encapsulation

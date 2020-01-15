@@ -15,6 +15,15 @@ public class PrefsAlimentaires {
 	private List<String> aliments = new ArrayList<String>();
 	private List<String> allergies = new ArrayList<String>();
 
+	public PrefsAlimentaires() {
+
+	}
+
+	public PrefsAlimentaires(List<String> aliments, List<String> allergies) {
+		this.aliments = aliments;
+		this.allergies = allergies;
+	}
+
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	public long getId() {

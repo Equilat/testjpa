@@ -20,7 +20,6 @@ public class Reponse {
     }
 
     @OneToMany
-    @JoinColumn(name = "id")
     public List<DateReu> getDateReus() {
         return dateReus;
     }
