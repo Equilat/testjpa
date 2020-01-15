@@ -10,12 +10,21 @@ public class Sondage {
 	private long id;
 	
 	private String lienWeb;
-	private List<Date> dates;
+	private List<DateReu> dateReus;
 	private List<Utilisateur> utilisateurs;
 	private Reunion reunion;
 
+	public Sondage() {
+
+	}
+
+	public Sondage(String lienWeb, Reunion reunion) {
+		this.lienWeb = lienWeb;
+		this.reunion = reunion;
+	}
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue (strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
@@ -34,12 +43,12 @@ public class Sondage {
 	
 	@OneToMany
 	@JoinColumn(name = "id")
-	public List<Date> getDates() {
-		return dates;
+	public List<DateReu> getDateReus() {
+		return dateReus;
 	}
 
-	public void setDates(List<Date> dates) {
-		this.dates = dates;
+	public void setDateReus(List<DateReu> dateReus) {
+		this.dateReus = dateReus;
 	}
 
 	@ManyToMany
@@ -60,6 +69,9 @@ public class Sondage {
 	public void setReunion(Reunion reunion) {
 		this.reunion = reunion;
 	}
-	
+
+	public void addUtilisateur(Utilisateur utilisateur) {
+		this.utilisateurs.add(utilisateur);
+	}
 
 }

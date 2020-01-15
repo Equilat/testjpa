@@ -1,19 +1,26 @@
 package domain;
 
-import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
 public class Reunion {
 
 	private long id;
-	private Date dateFixee;
+	private DateReu dateReuFixee;
 	private String intitule;
 	private String resume;
 
+	public Reunion() {
+
+	}
+
+	public Reunion(String intitule, String  resume) {
+		this.intitule = intitule;
+		this.resume = resume;
+	}
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue (strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
@@ -35,11 +42,11 @@ public class Reunion {
 	}
 
 	@ManyToOne
-	public Date getDateFixee() {
-		return dateFixee;
+	public DateReu getDateReuFixee() {
+		return dateReuFixee;
 	}
-	public void setDateFixee(Date dateFixee) {
-		this.dateFixee = dateFixee;
+	public void setDateReuFixee(DateReu dateReuFixee) {
+		this.dateReuFixee = dateReuFixee;
 	}
 	
 

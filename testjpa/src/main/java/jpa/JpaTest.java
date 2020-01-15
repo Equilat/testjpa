@@ -1,51 +1,56 @@
 package jpa;
 
+import domain.*;
+
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
-import domain.Utilisateur;
 
 public class JpaTest {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		EntityManagerFactory factory = Persistence
-				.createEntityManagerFactory("dev");
-		EntityManager manager = factory.createEntityManager();
+    private EntityManager manager;
 
-		EntityTransaction tx = manager.getTransaction();
-		tx.begin();
-		try {
-
-			Utilisateur p = new Utilisateur();
-			p.setMail("martin2@mail.com");
-			manager.persist(p);
+    public JpaTest(EntityManager manager) {
+        this.manager = manager;
+    }
 
 
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        EntityManagerFactory factory = Persistence
+                .createEntityManagerFactory("dev");
+        EntityManager manager = factory.createEntityManager();
+        JpaTest test = new JpaTest(manager);
+        EntityTransaction tx = manager.getTransaction();
+        tx.begin();
+        try {
+            test.createUtilisateurs();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        tx.commit();
 
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		tx.commit();
-		String s = "SELECT e FROM Utilisateur as e where e.mail=:mail";
+        test.createUtilisateurs();
 
-		Query q = manager.createQuery(s, Utilisateur.class);
-		q.setParameter("mail", "martin2@mail.com"); 
-		List<Utilisateur> res = q.getResultList();
+        manager.close();
+        factory.close();
+    }
 
-		System.err.println(res.size());
-		System.err.println(res.get(0).getMail());
-
-		manager.close();
-		factory.close();
-	}
-
+    private void createUtilisateurs() {
+        PrefsAlimentaires prefsAlimentairesUser1 = new PrefsAlimentaires();
+        prefsAlimentairesUser1.addAllergy("arachide");
+        prefsAlimentairesUser1.addAliment("pizza");
+        prefsAlimentairesUser1.addAliment("nems");
+        manager.persist(prefsAlimentairesUser1);
+        Utilisateur utilisateur1 = new Utilisateur("emile.georget@hotmail.com", "Emile", "Georget", prefsAlimentairesUser1);
+        manager.persist(utilisateur1);
+        PrefsAlimentaires prefsAlimentairesUser2 = new PrefsAlimentaires();
+        prefsAlimentairesUser1.addAllergy("Lactose");
+        prefsAlimentairesUser1.addAliment("Salade");
+        manager.persist(prefsAlimentairesUser2);
+        Utilisateur utilisateur2 = new Utilisateur("helene.heinle@hotmail.com", "Heinle", "Hélène", prefsAlimentairesUser2);
+        manager.persist(utilisateur2);
+    }
 }

@@ -4,22 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 public class PrefsAlimentaires {
 
 	private long id;
-	// !!! JPA ne sait pas  comment traduire List en bdd d'où * (autre solution
-	// : créer une classe Allergie et une classe Aliment
-	private List<String> aliments;
-	private List<String> allergies;
+	// !!! JPA ne sait pas  comment traduire List en bdd d'oï¿½ * (autre solution
+	// : crï¿½er une classe Allergie et une classe Aliment
+	private List<String> aliments = new ArrayList<String>();
+	private List<String> allergies = new ArrayList<String>();
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue (strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
@@ -60,6 +57,10 @@ public class PrefsAlimentaires {
 		}
 	}
 
+	public void addAliment(String aliment) {
+		this.aliments.add(aliment);
+	}
+
 
 	@Transient
 	public List<String> getAllergies() {
@@ -68,6 +69,11 @@ public class PrefsAlimentaires {
 
 	public void setAllergies(List<String> allergies) {
 		this.allergies = allergies;
+	}
+
+
+	public void addAllergy(String allergy) {
+		this.allergies.add(allergy);
 	}
 	
 	

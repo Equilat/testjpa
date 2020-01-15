@@ -8,7 +8,7 @@ import java.util.List;
 public class Reponse {
 
     private List<Utilisateur> utilisateurs;
-    private List<Date> dates;
+    private List<DateReu> dateReus;
 
     @ManyToMany (mappedBy = "reponses")
     public List<Utilisateur> getUtilisateurs() {
@@ -21,11 +21,11 @@ public class Reponse {
 
     @OneToMany
     @JoinColumn(name = "id")
-    public List<Date> getDates() {
-        return dates;
+    public List<DateReu> getDateReus() {
+        return dateReus;
     }
 
-    public void setDates(List<Date> dates) {
-        this.dates = dates;
+    public void setDateReus(List<DateReu> dateReus) {
+        this.dateReus = dateReus;
     }
 }

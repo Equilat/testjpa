@@ -11,7 +11,17 @@ public class Utilisateur {
 	private String nom;
 	private String prenom;
 	private List<Sondage> sondages;
-	private List<PrefsAlimentaires> prefsAlimentaires;
+	private PrefsAlimentaires prefsAlimentaires;
+
+	public Utilisateur() {
+	}
+
+	public Utilisateur(String mail, String nom, String prenom, PrefsAlimentaires prefsAlimentaires) {
+		this.mail = mail;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.prefsAlimentaires = prefsAlimentaires;
+	}
 
 	// better to put @Id on the getters to preserve encapsulation
 	@Id
@@ -48,13 +58,12 @@ public class Utilisateur {
 		this.sondages = sondages;
 	}
 
-	@OneToMany
-	@JoinColumn(name = "id")
-	public List<PrefsAlimentaires> getPrefsAlimentaires() {
+	@OneToOne
+	public PrefsAlimentaires getPrefsAlimentaires() {
 		return this.prefsAlimentaires;
 	}
 
-	public void setPrefsAlimentaires(List<PrefsAlimentaires> prefsAlimentaires) {
+	public void setPrefsAlimentaires(PrefsAlimentaires prefsAlimentaires) {
 		this.prefsAlimentaires = prefsAlimentaires;
 	}
 }
