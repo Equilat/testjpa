@@ -1,9 +1,11 @@
 package servlet;
 
 import domain.Utilisateur;
+import jpa.JpaTest;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,17 +23,26 @@ public class UserInfo extends HttpServlet {
             throws IOException {
         response.setContentType("text/html");
 
-        EntityManagerFactory factory = Persistence
-                .createEntityManagerFactory("dev");
-        EntityManager manager = factory.createEntityManager();
-
         String nom = request.getParameter("name");
         String prenom = request.getParameter("firstname");
         String mail = request.getParameter("mail");
 
-        Utilisateur utilisateur1 = new Utilisateur(mail, nom, prenom);
-        manager.persist(utilisateur1);
+        EntityManagerFactory factory = Persistence
+                .createEntityManagerFactory("dev");
+        EntityManager manager = factory.createEntityManager();
+        EntityTransaction tx = manager.getTransaction();
+        tx.begin();
+        try {
 
+            Utilisateur utilisateur1 = new Utilisateur(mail, nom, prenom);
+            manager.persist(utilisateur1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        tx.commit();
+
+        manager.close();
+        factory.close();
 
         PrintWriter out = response.getWriter();
 
