@@ -68,5 +68,15 @@
             conteneur d’application et ne doit pas être embarqué au sein de l’application Web. -->
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-servlet</artifactId>
+            <version>1.18.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>1.18.3</version>
+        </dependency>
     </dependencies>
 </project>
