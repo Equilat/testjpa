@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class Sondage {
 
 	public Sondage(String lienWeb) {
 		this.lienWeb = lienWeb;
+		utilisateurs = new ArrayList<>();
 	}
 
 	@Id

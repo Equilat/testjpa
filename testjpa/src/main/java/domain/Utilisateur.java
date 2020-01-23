@@ -1,6 +1,8 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import javax.persistence.*;
 
@@ -20,6 +22,7 @@ public class Utilisateur {
 		this.mail = mail;
 		this.nom = nom;
 		this.prenom = prenom;
+		sondages = new ArrayList<>();
 	}
 
 	// better to put @Id on the getters to preserve encapsulation
@@ -48,13 +51,21 @@ public class Utilisateur {
 		this.prenom = prenom;
 	}
 
-	@ManyToMany (mappedBy = "utilisateurs")
+	@ManyToMany (mappedBy = "utilisateurs", cascade = CascadeType.MERGE)
 	public List<Sondage> getSondages() {
 		return sondages;
 	}
 
 	public void setSondages(List<Sondage> sondages) {
 		this.sondages = sondages;
+	}
+
+	public Utilisateur addSondages(List<Sondage> sondages) {
+		for(Sondage sondage : sondages) {
+			sondage.getUtilisateurs().add(this);
+			this.getSondages().add(sondage);
+		}
+		return this;
 	}
 
 	@OneToOne
