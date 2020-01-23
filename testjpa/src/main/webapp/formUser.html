@@ -1,10 +1,14 @@
 <html>
     <body>
-        <form Action="/UserInfo" Method="POST">
+        <form Action="/rest/hello" Method="POST">
             Name : <input name=name size=20 type=text><br>
             Firstname : <input name=firstname size=20 type=text><br>
             Mail : <input name=mail size=2 type=email><br>
-            <input type=submit value=Send>
+            <input type=submit value="Creer utilisateur">
+        </form>
+
+        <form Action="/rest/hello" Method="GET">
+            <input type=submit value="Lister utilisateurs">
         </form>
     </body>
 </html>
