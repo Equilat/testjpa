@@ -2,8 +2,6 @@ package rest.api;
 
 import domain.Utilisateur;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 public interface ServiceUtilisateur {
@@ -13,6 +11,7 @@ public interface ServiceUtilisateur {
 
     List<Utilisateur> getUtilisateurByMail(String mail);
 
-    void addUtilisateur(Utilisateur utilisateur);
+    Utilisateur addUtilisateur(Utilisateur utilisateur);
 
+    void removeUtilisateur(String mail);
 }
