@@ -37,9 +37,8 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
     }
 
     @POST
-    @Path("/add")
-    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Override
     public Utilisateur addUtilisateur(Utilisateur utilisateur) {
         return this.daoUtilisateur.createUser(utilisateur);

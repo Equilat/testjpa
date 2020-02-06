@@ -9,9 +9,13 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.awt.*;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Path("/sondage")
 public class ServiceSondageImpl implements ServiceSondage {
+
+    private static final Logger logger = Logger.getLogger(ServiceSondageImpl.class.getName());
+
 
     private DaoSondage daoSondage;
 
@@ -35,8 +39,8 @@ public class ServiceSondageImpl implements ServiceSondage {
     }
 
     @POST
-    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Override
     public Sondage createSondageLieu(SondageLieu sondageLieu) {
         return daoSondage.createSondageLieu(sondageLieu);
