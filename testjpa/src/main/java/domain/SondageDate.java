@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 public class SondageDate extends Sondage {
 
-    private List<DateReu> dateReus;
+//    private List<DateReu> dateReus;
 
     public SondageDate() {
     }
@@ -18,13 +18,13 @@ public class SondageDate extends Sondage {
         super(lienWeb);
     }
 
-    @ManyToMany (mappedBy = "dateReus", cascade = CascadeType.MERGE)
-    public List<DateReu> getDateReus() {
-        return dateReus;
-    }
-
-    public void setDateReus(List<DateReu> dateReus) {
-        this.dateReus = dateReus;
-    }
+//    @ManyToMany (mappedBy = "dateReus", cascade = CascadeType.MERGE)
+//    public List<DateReu> getDateReus() {
+//        return dateReus;
+//    }
+//
+//    public void setDateReus(List<DateReu> dateReus) {
+//        this.dateReus = dateReus;
+//    }
 
 }

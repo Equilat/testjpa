@@ -12,7 +12,7 @@ public class Sondage {
 	
 	private String lienWeb;
 	private List<Utilisateur> utilisateurs;
-	private List<DateReu> dateReus;
+	private List<DateReu> datesReus;
 	private Reunion reunion;
 
 	public Sondage() {
@@ -21,7 +21,8 @@ public class Sondage {
 
 	public Sondage(String lienWeb) {
 		this.lienWeb = lienWeb;
-		utilisateurs = new ArrayList<>();
+		this.utilisateurs = new ArrayList<>();
+		this.datesReus = new ArrayList<>();
 	}
 
 	@Id
@@ -73,14 +74,14 @@ public class Sondage {
 	@ManyToMany
 	@JoinTable(
 			name = "SONDAGE_DATEREU",
-			joinColumns = @JoinColumn(name = "SONDAFES_ID"),
+			joinColumns = @JoinColumn(name = "SONDAGES_ID"),
 			inverseJoinColumns = @JoinColumn(name = "DATEREU_ID")
 	)
-	public List<DateReu> getDatesReu() {
-		return this.dateReus;
+	public List<DateReu> getDatesReus() {
+		return datesReus;
 	}
 
-	public void setDateReus(ArrayList<DateReu> datesReus) {
-		this.dateReus = datesReus;
+	public void setDatesReus(List<DateReu> datesReus) {
+		this.datesReus = datesReus;
 	}
 }

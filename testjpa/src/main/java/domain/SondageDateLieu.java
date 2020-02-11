@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 @Entity
 public class SondageDateLieu extends Sondage {
 
-    private List<DateReu> dateReus;
+//    private List<DateReu> dateReus;
     private List<String> lieux;
 
     public SondageDateLieu() {
@@ -21,14 +21,14 @@ public class SondageDateLieu extends Sondage {
         this.lieux = lieux;
     }
 
-    @OneToMany
-    public List<DateReu> getDateReus() {
-        return dateReus;
-    }
-
-    public void setDateReus(List<DateReu> dateReus) {
-        this.dateReus = dateReus;
-    }
+//    @OneToMany
+//    public List<DateReu> getDateReus() {
+//        return dateReus;
+//    }
+//
+//    public void setDateReus(List<DateReu> dateReus) {
+//        this.dateReus = dateReus;
+//    }
 
     @Transient
     public List<String> getLieux() {
