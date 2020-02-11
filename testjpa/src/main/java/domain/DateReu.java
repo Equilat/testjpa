@@ -15,6 +15,7 @@ public class DateReu {
 	private long id;
 	private boolean pause;
 	private List<Reunion> reunions;
+	private List<Sondage> sondages;
 	private Date sqlDate;
 
 	public DateReu() {
@@ -23,6 +24,7 @@ public class DateReu {
 
 	public DateReu(String dateReu, boolean pause) {
 		reunions = new ArrayList<Reunion>();
+		sondages = new ArrayList<Sondage>();
 		try {
 			DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
 			java.util.Date date = format.parse(dateReu);
@@ -67,6 +69,15 @@ public class DateReu {
 
 	public Date getSqlDate() {
 		return this.sqlDate;
+	}
+
+	@ManyToMany (mappedBy = "sondages")
+	public List<Sondage> getSondages() {
+		return this.sondages;
+	}
+
+	public void setSondages(List<Sondage> sondages) {
+		this.sondages = sondages;
 	}
 
 	public void setSqlDate(Date sqlDate) {
