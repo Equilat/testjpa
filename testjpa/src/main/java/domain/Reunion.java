@@ -45,6 +45,7 @@ public class Reunion {
 	public DateReu getDateReuFixee() {
 		return dateReuFixee;
 	}
+
 	public void setDateReuFixee(DateReu dateReuFixee) {
 		this.dateReuFixee = dateReuFixee;
 	}

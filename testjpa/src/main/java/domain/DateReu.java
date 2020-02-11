@@ -71,7 +71,7 @@ public class DateReu {
 		return this.sqlDate;
 	}
 
-	@ManyToMany (mappedBy = "sondages")
+	@ManyToMany (mappedBy = "dateReus")
 	public List<Sondage> getSondages() {
 		return this.sondages;
 	}

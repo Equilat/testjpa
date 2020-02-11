@@ -51,7 +51,7 @@ public class Utilisateur {
 		this.prenom = prenom;
 	}
 
-	@ManyToMany (mappedBy = "utilisateurs", cascade = CascadeType.MERGE)
+	@ManyToMany (mappedBy = "utilisateurs", cascade = CascadeType.PERSIST)
 	public List<Sondage> getSondages() {
 		return sondages;
 	}
@@ -68,7 +68,7 @@ public class Utilisateur {
 		return this;
 	}
 
-	@OneToOne
+	@OneToOne (cascade = CascadeType.PERSIST)
 	public PrefsAlimentaires getPrefsAlimentaires() {
 		return this.prefsAlimentaires;
 	}

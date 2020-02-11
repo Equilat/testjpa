@@ -12,6 +12,7 @@ public class Sondage {
 	
 	private String lienWeb;
 	private List<Utilisateur> utilisateurs;
+	private List<DateReu> dateReus;
 	private Reunion reunion;
 
 	public Sondage() {
@@ -69,4 +70,17 @@ public class Sondage {
 		this.utilisateurs.add(utilisateur);
 	}
 
+	@ManyToMany
+	@JoinTable(
+			name = "SONDAGE_DATEREU",
+			joinColumns = @JoinColumn(name = "SONDAFES_ID"),
+			inverseJoinColumns = @JoinColumn(name = "DATEREU_ID")
+	)
+	public List<DateReu> getDatesReu() {
+		return this.dateReus;
+	}
+
+	public void setDateReus(ArrayList<DateReu> datesReus) {
+		this.dateReus = datesReus;
+	}
 }
