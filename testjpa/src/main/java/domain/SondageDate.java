@@ -1,15 +1,13 @@
 package domain;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@DiscriminatorValue("date")
 public class SondageDate extends Sondage {
 
-//    private List<DateReu> dateReus;
+    private List<DateReu> datesReus;
 
     public SondageDate() {
     }
@@ -26,5 +24,14 @@ public class SondageDate extends Sondage {
 //    public void setDateReus(List<DateReu> dateReus) {
 //        this.dateReus = dateReus;
 //    }
+
+    @OneToMany(mappedBy = "sondage")
+    public List<DateReu> getDatesReus() {
+        return datesReus;
+    }
+
+    public void setDatesReus(List<DateReu> datesReus) {
+        this.datesReus = datesReus;
+    }
 
 }

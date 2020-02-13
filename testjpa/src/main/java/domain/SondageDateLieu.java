@@ -1,16 +1,15 @@
 package domain;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
 @Entity
+@DiscriminatorValue("date_lieu")
 public class SondageDateLieu extends Sondage {
 
-//    private List<DateReu> dateReus;
+    private List<DateReu> datesReus;
     private List<String> lieux;
 
     public SondageDateLieu() {
@@ -21,14 +20,22 @@ public class SondageDateLieu extends Sondage {
         this.lieux = lieux;
     }
 
-//    @OneToMany
-//    public List<DateReu> getDateReus() {
+    //    @OneToMany
+//    public List<DateReu> getDateReusDev() {
 //        return dateReus;
 //    }
 //
-//    public void setDateReus(List<DateReu> dateReus) {
+//    public void setDateReusDev(List<DateReu> dateReus) {
 //        this.dateReus = dateReus;
 //    }
+    @OneToMany(mappedBy = "sondage")
+    public List<DateReu> getDatesReus() {
+        return datesReus;
+    }
+
+    public void setDatesReus(List<DateReu> datesReus) {
+        this.datesReus = datesReus;
+    }
 
     @Transient
     public List<String> getLieux() {
@@ -40,13 +47,23 @@ public class SondageDateLieu extends Sondage {
         this.lieux = lieux;
     }
 
+    //* ces getter/setter sont pour JPA
+    protected String getLieuxBase() {
+        // pour mettre la liste en base, on transforme notre liste
+        // en chaine du type : "carotte;courgette"
+        StringBuilder res = new StringBuilder();
+        for (String s : this.lieux) {
+            res.append(s).append(";");
+        }
+        return res.toString();
+    }
+
     protected void setLieuxBase(String lieu) {
         //on recoit "carotte;courgette", on re constitue notre liste
-        StringTokenizer s = new StringTokenizer(lieu,";");
+        StringTokenizer s = new StringTokenizer(lieu, ";");
         this.lieux = new ArrayList<String>();
         while (s.hasMoreElements()) {
             this.lieux.add(s.nextToken());
-
         }
     }
 }

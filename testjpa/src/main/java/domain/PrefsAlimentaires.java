@@ -1,5 +1,7 @@
 package domain;
 
+import org.hibernate.annotations.Cascade;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -49,11 +51,11 @@ public class PrefsAlimentaires {
 	protected String getAlimentsBase() {
 		// pour mettre la liste en base, on transforme notre liste
 		// en chaine du type : "carotte;courgette"
-		String res = "";
+		StringBuilder res = new StringBuilder();
 		for (String s : aliments) {
-			res = res + s + ";";
+			res.append(s).append(";");
 		}
-		return res;
+		return res.toString();
 	}
 
 	protected void setAlimentsBase(String aliments) {

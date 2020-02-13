@@ -12,6 +12,7 @@ public class Utilisateur {
     private String prenom;
     private List<Sondage> sondages;
     private PrefsAlimentaires prefsAlimentaires;
+//    private List<Reponse> reponses;
 
     public Utilisateur() {
     }
@@ -20,7 +21,8 @@ public class Utilisateur {
         this.mail = mail;
         this.nom = nom;
         this.prenom = prenom;
-        sondages = new ArrayList<>();
+        this.sondages = new ArrayList<>();
+        this.prefsAlimentaires = new PrefsAlimentaires();
     }
 
     // better to put @Id on the getters to preserve encapsulation

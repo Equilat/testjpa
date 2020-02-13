@@ -1,18 +1,22 @@
 package domain;
 
+import org.codehaus.jackson.map.annotate.JsonRootName;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-public class Sondage {
+@Inheritance(strategy=
+		InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name = "TYPE_SONDAGE")
+public abstract class Sondage {
 	
 	private long id;
-	
 	private String lienWeb;
 	private List<Utilisateur> utilisateurs;
-	private List<DateReu> datesReus;
 	private Reunion reunion;
 
 	public Sondage() {
@@ -22,7 +26,6 @@ public class Sondage {
 	public Sondage(String lienWeb) {
 		this.lienWeb = lienWeb;
 		this.utilisateurs = new ArrayList<>();
-		this.datesReus = new ArrayList<>();
 	}
 
 	@Id
@@ -71,17 +74,5 @@ public class Sondage {
 		this.utilisateurs.add(utilisateur);
 	}
 
-	@ManyToMany
-	@JoinTable(
-			name = "SONDAGE_DATEREU",
-			joinColumns = @JoinColumn(name = "SONDAGES_ID"),
-			inverseJoinColumns = @JoinColumn(name = "DATEREU_ID")
-	)
-	public List<DateReu> getDatesReus() {
-		return datesReus;
-	}
 
-	public void setDatesReus(List<DateReu> datesReus) {
-		this.datesReus = datesReus;
-	}
 }

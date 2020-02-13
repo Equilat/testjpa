@@ -9,6 +9,10 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.logging.Logger;
 
+/**
+ * ServiceUtilisateur.
+ * Get the information about all users, one user...
+ */
 @Path("/user")
 public class ServiceUtilisateurImpl implements ServiceUtilisateur {
 
