@@ -1,78 +1,73 @@
 package domain;
 
-import org.codehaus.jackson.map.annotate.JsonRootName;
-
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
-
 @Entity
-@Inheritance(strategy=
-		InheritanceType.SINGLE_TABLE)
-//@DiscriminatorColumn(name = "TYPE_SONDAGE")
+@Inheritance(strategy =
+        InheritanceType.SINGLE_TABLE)
 public abstract class Sondage {
-	
-	private long id;
-	private String lienWeb;
-	private List<Utilisateur> utilisateurs;
-	private Reunion reunion;
 
-	public Sondage() {
+    private long id;
+    private String lienWeb;
+    private List<Utilisateur> utilisateurs;
+    private Reunion reunion;
 
-	}
+    public Sondage() {
 
-	public Sondage(String lienWeb) {
-		this.lienWeb = lienWeb;
-		this.utilisateurs = new ArrayList<>();
-	}
+    }
 
-	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
-	public long getId() {
-		return id;
-	}
+    public Sondage(String lienWeb) {
+        this.lienWeb = lienWeb;
+        this.utilisateurs = new ArrayList<>();
+    }
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long getId() {
+        return id;
+    }
 
-	public String getLienWeb() {
-		return lienWeb;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public void setLienWeb(String lienWeb) {
-		this.lienWeb = lienWeb;
-	}
+    public String getLienWeb() {
+        return lienWeb;
+    }
 
-	@ManyToMany(cascade = {
-			CascadeType.PERSIST,
-			CascadeType.MERGE
-	})
-	@JoinTable(name = "UTILISATEUR_SONDAGE",
-			joinColumns = @JoinColumn(name = "SONDAGES_ID"),
-			inverseJoinColumns = @JoinColumn(name = "UTILISATEURS_MAIL"))
-	public List<Utilisateur> getUtilisateurs() {
-		return this.utilisateurs;
-	}
+    public void setLienWeb(String lienWeb) {
+        this.lienWeb = lienWeb;
+    }
 
-	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
-	}
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "UTILISATEUR_SONDAGE",
+            joinColumns = @JoinColumn(name = "SONDAGES_ID"),
+            inverseJoinColumns = @JoinColumn(name = "UTILISATEURS_MAIL"))
+    public List<Utilisateur> getUtilisateurs() {
+        return this.utilisateurs;
+    }
 
-	@OneToOne
-	public Reunion getReunion() {
-		return this.reunion;
-	}
+    public void setUtilisateurs(List<Utilisateur> utilisateurs) {
+        this.utilisateurs = utilisateurs;
+    }
 
-	public void setReunion(Reunion reunion) {
-		this.reunion = reunion;
-	}
+    @OneToOne
+    public Reunion getReunion() {
+        return this.reunion;
+    }
 
-	public void addUtilisateur(Utilisateur utilisateur) {
-		this.utilisateurs.add(utilisateur);
-	}
+    public void setReunion(Reunion reunion) {
+        this.reunion = reunion;
+    }
+
+    public void addUtilisateur(Utilisateur utilisateur) {
+        this.utilisateurs.add(utilisateur);
+    }
 
 
 }

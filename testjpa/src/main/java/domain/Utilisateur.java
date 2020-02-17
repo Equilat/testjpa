@@ -68,7 +68,7 @@ public class Utilisateur {
         return this;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     public PrefsAlimentaires getPrefsAlimentaires() {
         return this.prefsAlimentaires;
     }

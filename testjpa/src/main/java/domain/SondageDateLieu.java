@@ -1,6 +1,9 @@
 package domain;
 
-import javax.persistence.*;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -9,7 +12,7 @@ import java.util.StringTokenizer;
 @DiscriminatorValue("date_lieu")
 public class SondageDateLieu extends Sondage {
 
-    private List<DateReu> datesReus;
+    private List<DateReu> datesReu;
     private List<String> lieux;
 
     public SondageDateLieu() {
@@ -18,23 +21,16 @@ public class SondageDateLieu extends Sondage {
     public SondageDateLieu(String lienWeb, List<String> lieux) {
         super(lienWeb);
         this.lieux = lieux;
+        this.datesReu = new ArrayList<DateReu>();
     }
 
-    //    @OneToMany
-//    public List<DateReu> getDateReusDev() {
-//        return dateReus;
-//    }
-//
-//    public void setDateReusDev(List<DateReu> dateReus) {
-//        this.dateReus = dateReus;
-//    }
     @OneToMany(mappedBy = "sondage")
-    public List<DateReu> getDatesReus() {
-        return datesReus;
+    public List<DateReu> getDatesReu() {
+        return datesReu;
     }
 
-    public void setDatesReus(List<DateReu> datesReus) {
-        this.datesReus = datesReus;
+    public void setDatesReu(List<DateReu> datesReus) {
+        this.datesReu = datesReus;
     }
 
     @Transient

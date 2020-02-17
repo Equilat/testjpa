@@ -14,7 +14,7 @@ public class DaoSondage {
         return EntityManagerHelper.getEntityManager().createQuery("select s from Sondage as s", Sondage.class).getResultList();
     }
 
-    public List<Sondage> findById(String id) {
+    public List<Sondage> findById(long id) {
         return EntityManagerHelper.getEntityManager().createQuery("select s from Sondage as s where s.id = :id", Sondage.class)
                 .setParameter("id", id).getResultList();
     }
@@ -45,7 +45,7 @@ public class DaoSondage {
         return sondageDateLieu;
     }
 
-    public void deleteSondage(String id) {
+    public void deleteSondage(long id) {
         EntityManagerHelper.beginTransaction();
         EntityManagerHelper.getEntityManager().remove(this.findById(id));
         EntityManagerHelper.commit();

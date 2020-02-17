@@ -63,9 +63,9 @@ public class PrefsAlimentaires {
 		StringTokenizer s = new StringTokenizer(aliments,";");
 		this.aliments = new ArrayList<String>();
 		while (s.hasMoreElements()) {
-			this.aliments .add(s.nextToken());
-			
+			this.aliments.add(s.nextToken());
 		}
+		System.out.println("ùmlmlsdf"+this.aliments.size());
 	}
 
 	public void addAliment(String aliment) {
@@ -77,9 +77,26 @@ public class PrefsAlimentaires {
 	public List<String> getAllergies() {
 		return allergies;
 	}
-
+	@Transient
 	public void setAllergies(List<String> allergies) {
 		this.allergies = allergies;
+	}
+
+	protected String getAllergiesBase() {
+		StringBuilder res = new StringBuilder();
+		for (String s : this.allergies) {
+			res.append(s).append(";");
+		}
+		return res.toString();
+	}
+
+	protected void setAllergiesBase(String allergies) {
+		//on recoit "carotte;courgette", on re constitue notre liste
+		StringTokenizer s = new StringTokenizer(allergies,";");
+		this.allergies = new ArrayList<String>();
+		while (s.hasMoreElements()) {
+			this.allergies.add(s.nextToken());
+		}
 	}
 
 

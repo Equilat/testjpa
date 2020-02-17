@@ -9,7 +9,6 @@ import rest.api.ServiceSondage;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.awt.*;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -37,7 +36,7 @@ public class ServiceSondageImpl implements ServiceSondage {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
-    public List<Sondage> findById(@PathParam("id") String id) {
+    public List<Sondage> findById(@PathParam("id") long id) {
         return daoSondage.findById(id);
     }
 
@@ -71,7 +70,7 @@ public class ServiceSondageImpl implements ServiceSondage {
     @DELETE
     @Path("/{id}")
     @Override
-    public void deleteSondage(@PathParam("id") String id) {
+    public void deleteSondage(@PathParam("id") long id) {
         daoSondage.deleteSondage(id);
     }
 }
