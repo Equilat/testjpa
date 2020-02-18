@@ -1,5 +1,8 @@
 package domain;
 
+import org.codehaus.jackson.annotate.JsonSubTypes;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +10,15 @@ import java.util.List;
 @Entity
 @Inheritance(strategy =
         InheritanceType.SINGLE_TABLE)
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "dtype")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = SondageDate.class, name = "date"),
+        @JsonSubTypes.Type(value = SondageDateLieu.class, name = "dateLieu"),
+        @JsonSubTypes.Type(value = SondageLieu.class, name = "lieu")
+})
 public abstract class Sondage {
 
     private long id;
