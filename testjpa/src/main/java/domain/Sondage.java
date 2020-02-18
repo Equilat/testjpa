@@ -13,6 +13,7 @@ public abstract class Sondage {
     private String lienWeb;
     private List<Utilisateur> utilisateurs;
     private Reunion reunion;
+    public List<Reponse> reponses;
 
     public Sondage() {
 
@@ -69,5 +70,12 @@ public abstract class Sondage {
         this.utilisateurs.add(utilisateur);
     }
 
+    @OneToMany(mappedBy = "sondageRepondu")
+    public List<Reponse> getReponses() {
+        return reponses;
+    }
 
+    public void setReponses(List<Reponse> reponses) {
+        this.reponses = reponses;
+    }
 }

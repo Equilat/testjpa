@@ -1,24 +1,28 @@
 package domain;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
-//@Entity
+@Entity
 public class Reponse {
 
-    private List<Utilisateur> utilisateurs;
+    private String id;
+    private Utilisateur utilisateur;
+    private Sondage sondageRepondu;
     private List<DateReu> dateReus;
+    private String lieu;
 
-    @ManyToMany (mappedBy = "reponses")
-    public List<Utilisateur> getUtilisateurs() {
-        return this.utilisateurs;
+    @ManyToOne
+    public Utilisateur getUtilisateur() {
+        return this.utilisateur;
     }
 
-    public void setUtilisateurs() {
-        this.utilisateurs = utilisateurs;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    public void setUtilisateur() {
+        this.utilisateur = utilisateur;
     }
 
     @OneToMany
@@ -28,5 +32,31 @@ public class Reponse {
 
     public void setDateReus(List<DateReu> dateReus) {
         this.dateReus = dateReus;
+    }
+
+    @Id
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @ManyToOne
+    public Sondage getSondageRepondu() {
+        return sondageRepondu;
+    }
+
+    public void setSondageRepondu(Sondage sondageRepondu) {
+        this.sondageRepondu = sondageRepondu;
+    }
+
+    public String getLieu() {
+        return lieu;
+    }
+
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
     }
 }

@@ -12,7 +12,7 @@ public class Utilisateur {
     private String prenom;
     private List<Sondage> sondages;
     private PrefsAlimentaires prefsAlimentaires;
-//    private List<Reponse> reponses;
+    private List<Reponse> reponses;
 
     public Utilisateur() {
     }
@@ -75,5 +75,14 @@ public class Utilisateur {
 
     public void setPrefsAlimentaires(PrefsAlimentaires prefsAlimentaires) {
         this.prefsAlimentaires = prefsAlimentaires;
+    }
+
+    @OneToMany(mappedBy = "utilisateur")
+    public List<Reponse> getReponses() {
+        return reponses;
+    }
+
+    public void setReponses(List<Reponse> reponses) {
+        this.reponses = reponses;
     }
 }
