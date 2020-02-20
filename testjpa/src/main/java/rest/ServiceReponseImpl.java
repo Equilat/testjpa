@@ -8,7 +8,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/reponse")
+@Path("/answer")
 public class ServiceReponseImpl implements ServiceReponse {
 
     private DaoReponse daoReponse;

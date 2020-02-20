@@ -25,7 +25,7 @@ public class Reponse {
         this.utilisateur = utilisateur;
     }
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     public List<DateReu> getDateReus() {
         return dateReus;
     }
@@ -35,7 +35,7 @@ public class Reponse {
     }
 
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return id;
     }

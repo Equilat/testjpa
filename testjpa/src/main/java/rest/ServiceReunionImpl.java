@@ -8,7 +8,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/reunion")
+@Path("/meeting")
 public class ServiceReunionImpl implements ServiceReunion {
 
     private DaoReunion daoReunion;
