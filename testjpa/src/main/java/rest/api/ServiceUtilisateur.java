@@ -13,5 +13,5 @@ public interface ServiceUtilisateur {
 
     Utilisateur addUtilisateur(Utilisateur utilisateur);
 
-    void removeUtilisateur(String mail);
+//    void removeUtilisateur(String mail);
 }

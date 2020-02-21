@@ -29,7 +29,7 @@ public class ServiceReunionImpl implements ServiceReunion {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
-    public List<Reunion> findById(@PathParam("id") String id) {
+    public List<Reunion> findById(@PathParam("id") long id) {
         return daoReunion.findById(id);
     }
 
@@ -41,10 +41,10 @@ public class ServiceReunionImpl implements ServiceReunion {
         return daoReunion.createReunion(reunion);
     }
 
-    @DELETE
-    @Path("/{id}")
-    @Override
-    public void deleteReunion(String id) {
-        daoReunion.deleteReunion(id);
-    }
+//    @DELETE
+//    @Path("/{id}")
+//    @Override
+//    public void deleteReunion(@PathParam("id") long id) {
+//        daoReunion.deleteReunion(id);
+//    }
 }

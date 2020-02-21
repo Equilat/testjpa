@@ -22,7 +22,7 @@ public interface ServiceSondage {
 
     Sondage createSondageDateLieu(SondageDateLieu sondageDateLieu);
 
-    public void deleteSondage(long id);
+//    public void deleteSondage(long id);
 
 
 }

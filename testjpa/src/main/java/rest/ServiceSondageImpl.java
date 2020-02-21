@@ -67,10 +67,10 @@ public class ServiceSondageImpl implements ServiceSondage {
         return daoSondage.createSondageDateLieu(sondageDateLieu);
     }
 
-    @DELETE
-    @Path("/{id}")
-    @Override
-    public void deleteSondage(@PathParam("id") long id) {
-        daoSondage.deleteSondage(id);
-    }
+//    @DELETE
+//    @Path("/{id}")
+//    @Override
+//    public void deleteSondage(@PathParam("id") long id) {
+//        daoSondage.deleteSondage(id);
+//    }
 }

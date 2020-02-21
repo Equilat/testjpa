@@ -25,7 +25,7 @@ public class Reponse {
         this.utilisateur = utilisateur;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.MERGE)
     public List<DateReu> getDateReus() {
         return dateReus;
     }

@@ -8,10 +8,10 @@ public interface ServiceReunion {
 
     public List<Reunion> findAll();
 
-    public List<Reunion> findById(String id);
+    public List<Reunion> findById(long id);
 
     public Reunion createReunion(Reunion reunion);
 
-    public void deleteReunion(String id);
+//    public void deleteReunion(long id);
 
 }

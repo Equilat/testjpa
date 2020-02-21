@@ -11,7 +11,7 @@ public class DaoReunion {
         return EntityManagerHelper.getEntityManager().createQuery("select r from Reunion as r", Reunion.class).getResultList();
     }
 
-    public List<Reunion> findById(String id) {
+    public List<Reunion> findById(long id) {
         return EntityManagerHelper.getEntityManager().createQuery("select r from Reunion as r where r.id = :id", Reunion.class)
                 .setParameter("id", id).getResultList();
     }
@@ -23,7 +23,7 @@ public class DaoReunion {
         return reunion;
     }
 
-    public void deleteReunion(String id) {
+    public void deleteReunion(long id) {
         EntityManagerHelper.beginTransaction();
         EntityManagerHelper.getEntityManager().remove(this.findById(id));
         EntityManagerHelper.commit();

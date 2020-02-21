@@ -12,6 +12,6 @@ public interface ServiceReponse {
 
     public Reponse createReponse(Reponse reponse);
 
-    public void deleteReponse(String id);
+//    public void deleteReponse(String id);
 
 }

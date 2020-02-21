@@ -41,10 +41,10 @@ public class ServiceReponseImpl implements ServiceReponse {
         return daoReponse.createReponse(Reponse);
     }
 
-    @DELETE
-    @Path("/{id}")
-    @Override
-    public void deleteReponse(String id) {
-        daoReponse.deleteReponse(id);
-    }
+//    @DELETE
+//    @Path("/{id}")
+//    @Override
+//    public void deleteReponse(String id) {
+//        daoReponse.deleteReponse(id);
+//    }
 }

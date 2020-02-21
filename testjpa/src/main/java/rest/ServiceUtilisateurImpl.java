@@ -48,10 +48,10 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
         return this.daoUtilisateur.createUser(utilisateur);
     }
 
-    @DELETE
-    @Path("/{mail}")
-    @Override
-    public void removeUtilisateur(@PathParam("mail") String mail) {
-        daoUtilisateur.deleteUser(mail);
-    }
+//    @DELETE
+//    @Path("/{mail}")
+//    @Override
+//    public void removeUtilisateur(@PathParam("mail") String mail) {
+//        daoUtilisateur.deleteUser(mail);
+//    }
 }
