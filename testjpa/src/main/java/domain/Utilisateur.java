@@ -77,7 +77,7 @@ public class Utilisateur {
         this.prefsAlimentaires = prefsAlimentaires;
     }
 
-    @OneToMany(mappedBy = "utilisateur")
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.REMOVE)
     public List<Reponse> getReponses() {
         return reponses;
     }
