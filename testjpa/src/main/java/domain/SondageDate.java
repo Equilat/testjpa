@@ -1,8 +1,6 @@
 package domain;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -18,7 +16,7 @@ public class SondageDate extends Sondage {
         super(lienWeb);
     }
 
-    @OneToMany(mappedBy = "sondage")
+    @OneToMany(mappedBy = "sondage", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     public List<DateReu> getDatesReu() {
         return datesReu;
     }

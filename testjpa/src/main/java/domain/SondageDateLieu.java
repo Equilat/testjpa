@@ -1,9 +1,6 @@
 package domain;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -24,7 +21,7 @@ public class SondageDateLieu extends Sondage {
         this.datesReu = new ArrayList<DateReu>();
     }
 
-    @OneToMany(mappedBy = "sondage")
+    @OneToMany(mappedBy = "sondage", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     public List<DateReu> getDatesReu() {
         return datesReu;
     }
