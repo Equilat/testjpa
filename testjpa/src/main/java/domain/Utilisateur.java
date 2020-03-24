@@ -51,7 +51,7 @@ public class Utilisateur {
         this.prenom = prenom;
     }
 
-    @ManyToMany(mappedBy = "utilisateurs", cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "utilisateurs")
     public List<Sondage> getSondages() {
         return sondages;
     }

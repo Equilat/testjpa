@@ -1,5 +1,7 @@
 package domain;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Transient;
@@ -9,6 +11,7 @@ import java.util.StringTokenizer;
 
 @Entity
 @DiscriminatorValue("lieu")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SondageLieu extends Sondage {
 
     private List<String> lieux;

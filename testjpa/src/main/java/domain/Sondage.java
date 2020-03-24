@@ -1,5 +1,6 @@
 package domain;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonSubTypes;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
 
@@ -19,6 +20,7 @@ import java.util.List;
         @JsonSubTypes.Type(value = SondageDateLieu.class, name = "dateLieu"),
         @JsonSubTypes.Type(value = SondageLieu.class, name = "lieu")
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class Sondage {
 
     private long id;
