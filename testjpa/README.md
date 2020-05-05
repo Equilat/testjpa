@@ -3,17 +3,23 @@
 
 ## Contexte
 
-L'objecitf de ce projet était de créer une apllication permettant de réaliser des sondages afin d'organiser des réunions entre plusieurs participants. Ce fonctionnement est inspiré de la plateforme existante "Doodle".
+L'objectif de ce projet était de créer une apllication permettant de réaliser des sondages afin d'organiser des réunions entre plusieurs participants. Ce fonctionnement est inspiré de la plateforme existante "Doodle".
 
 ## Base de données et entités JPA
+Nous avons commencé par lister les éléments importants d'une application telle que Doodle. C'est ainsi que nous sommes arrivés au diagramme de classe suivant :
 
+
+Nous sommes ensuite passés au développement en commençant par traduire les classes précédentes en entités JPA.
 
 ## API REST
+La partie Back-end présentée ici, devait permettre, au final, de fournir une liste de méthodes interrogeant la base de données et donc de servir d'API.
 
 ### Services
-
+Dans le but d'implémenter l'API, nous avons implémenté des services.
+Nous avons préféré mettre en place un service par entité dans l'ensembe. Ainsi, le service concernant l'entité Utilisateur peut être accessible sur l'url http://localhost:8080/api/user, "user" étant le chamin d'accès attribué au service. Les méthodes utilitaires contenues dans ce service ont elles aussi un chemin d'accès. Ainsi, pour lister tous les utilisateurs, il faudrait interroger l'url http://localhost:8080/api/user/all à l'aide d'une requête HTTP GET.
 
 ### Data Access Objects (DAOs)
+
 
 
 
