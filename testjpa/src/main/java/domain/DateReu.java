@@ -13,7 +13,7 @@ import java.util.Locale;
 public class DateReu {
 
     private long id;
-    private boolean pause;
+    private boolean pause = false;
     private List<Reunion> reunions;
     private Sondage sondage;
 //    private List<Sondage> sondages;
@@ -24,6 +24,16 @@ public class DateReu {
 
     }
 
+    public DateReu(String dateReu) {
+        this.reunions = new ArrayList<Reunion>();
+        try {
+            DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
+            java.util.Date date = format.parse(dateReu);
+            this.date = new Date(date.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
     public DateReu(String dateReu, boolean pause) {
         this.reunions = new ArrayList<Reunion>();
         try {
